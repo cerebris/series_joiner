@@ -21,7 +21,7 @@ class TestSeriesJoiner < Test::Unit::TestCase
   
   context "using an 'or' conjunction" do
     setup do
-      @options = {:conjunction => 'or'}
+      @options = {:conjunction => ' or '}
     end
     
     should "join an array of one item" do
@@ -40,7 +40,7 @@ class TestSeriesJoiner < Test::Unit::TestCase
 
   context "using a ';' delimiter" do
     setup do
-      @options = {:delimiter => ';'}
+      @options = {:delimiter => '; '}
     end
     
     should "join an array of one item" do
@@ -54,6 +54,25 @@ class TestSeriesJoiner < Test::Unit::TestCase
     end
     should "join an array of four items" do
       assert_equal 'a; b; c and d', ['a', 'b', 'c', 'd'].join_as_series(@options)
+    end
+  end
+
+  context "using a ';' delimiter properly" do
+    setup do
+      @options = {:delimiter => '; ', :conjunction => '; or, '}
+    end
+    
+    should "join an array of one item" do
+      assert_equal 'a', ['a'].join_as_series(@options)
+    end
+    should "join an array of two items" do
+      assert_equal 'a; or, b', ['a', 'b'].join_as_series(@options)
+    end
+    should "join an array of three items" do
+      assert_equal 'a; b; or, c', ['a', 'b', 'c'].join_as_series(@options)
+    end
+    should "join an array of four items" do
+      assert_equal 'a; b; c; or, d', ['a', 'b', 'c', 'd'].join_as_series(@options)
     end
   end
 
@@ -73,25 +92,6 @@ class TestSeriesJoiner < Test::Unit::TestCase
     end
     should "join an array of four items" do
       assert_equal 'a, b, c, and d', ['a', 'b', 'c', 'd'].join_as_series(@options)
-    end
-  end
-
-  context "acting as a straight join without any padding" do
-    setup do
-      @options = {:delimiter => '/', :conjunction => '/', :padding => ''}
-    end
-    
-    should "join an array of one item" do
-      assert_equal 'a', ['a'].join_as_series(@options)
-    end
-    should "join an array of two items" do
-      assert_equal 'a/b', ['a', 'b'].join_as_series(@options)
-    end
-    should "join an array of three items" do
-      assert_equal 'a/b/c', ['a', 'b', 'c'].join_as_series(@options)
-    end
-    should "join an array of four items" do
-      assert_equal 'a/b/c/d', ['a', 'b', 'c', 'd'].join_as_series(@options)
     end
   end
 end
