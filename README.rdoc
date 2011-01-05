@@ -1,19 +1,58 @@
-= series_joiner
+= SeriesJoiner
 
-Description goes here.
+A gem for joining items in arrays together into grammatically correct series. 
 
-== Contributing to series_joiner
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+SeriesJoiner extends the <tt>Array</tt> class with a <tt>join_as_series()</tt> method which is similar to the built-in <tt>join()</tt> method. However, <tt>join_as_series()</tt> allows for custom delimiters and conjunctions. 
 
-== Copyright
+== Installation
 
-Copyright (c) 2011 Dan Gebhardt. See LICENSE.txt for
-further details.
+Run the following (perhaps as sudo):
 
+  gem install series_joiner
+  
+== Bundler Configuration
+
+Add the following to your Gemfile:
+
+  gem 'series_joiner'
+
+== Usage
+
+join_as_series() accepts the following options:
+
+  :delimiter       # inserted between items, except for the final two (default => ',')
+  :final_delimiter # inserted between the final two items (if > 2), but before the conjunction (default => '')
+  :conjunction     # inserted between the final two items (default => 'and')
+  :padding         # inserted after delimiters, as well as before and after conjunctions (default => ' ')
+
+By default, items are joined as follows:
+
+  ['a'].join_as_series #=> 'a'
+  
+  ['a', 'b'].join_as_series #=> 'a and b'
+  
+  ['a', 'b', 'c'].join_as_series #=> 'a, b and c'
+  
+  ['a', 'b', 'c', 'd'].join_as_series #=> 'a, b, c and d'
+
+Here are some examples using custom delimiters and/or conjunctions:
+
+  ['a', 'b', 'c'].join_as_series(:delimiter => ';') #=> 'a; b and c'
+
+  ['a', 'b', 'c'].join_as_series(:conjunction => 'or') #=> 'a, b or c'
+
+  ['a', 'b', 'c'].join_as_series(:delimiter => ';', :conjunction => '; or,') #=> 'a; b; or, c'
+
+The use of the serial comma (i.e. the final comma sometimes used before the conjunction) is much debated in grammar (http://en.wikipedia.org/wiki/Serial_comma). By default, SeriesJoiner does not use the serial comma. However, the <tt>:final_delimiter</tt> option can be set to <tt>','</tt> to include it:
+
+  ['a', 'b', 'c'].join_as_series(:final_delimiter => ',') #=> 'a, b, and c'
+
+== Implementation
+
+This gem is generated with jeweler and uses shoulda for testing. To run tests:
+
+  rake test
+
+== License
+
+MIT License. Copyright (c) 2011 Cerebris Corporation. See LICENSE.txt for further details.

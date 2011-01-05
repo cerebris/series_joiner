@@ -13,11 +13,11 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "series_joiner"
-  gem.homepage = "http://github.com/dgeb/series_joiner"
+  gem.homepage = "http://github.com/cerebris/series_joiner"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "dan@cerebris.com"
+  gem.summary = "Join items in arrays together into grammatically correct series."
+  gem.description = "Extends Array with a join_as_series() method for joining arrays of items together into grammatically correct series. Useful for joining series like 'a, b and c'. Custom delimiters and conjunctions can be specified."
+  gem.email = "contact@cerebris.com"
   gem.authors = ["Dan Gebhardt"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
