@@ -56,7 +56,7 @@ This gem is generated with jeweler and uses shoulda for testing. To run tests:
 
 This gem may be compared with the Rails ActiveSupport extension to Array <tt>to_sentence()</tt> (https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/array/conversions.rb). Here are a couple differences:
 * <tt>to_sentence()</tt> requires ActiveSupport, while <tt>join_as_series</tt> has no dependencies;
-* <tt>to_sentence()</tt> has I18n support baken in; and,
+* <tt>to_sentence()</tt> has I18n support baken in;
 * <tt>to_sentence()</tt> implements the serial comma (see definition above) by default, while <tt>join_as_series</tt> does not; and,
 * <tt>to_sentence()</tt> requires two options (<tt>:two_words_connector</tt> and <tt>:last_word_connector</tt>) to override a conjunction, instead of the one (<tt>:conjunction</tt>) required by <tt>join_as_series</tt>.
 
