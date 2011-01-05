@@ -40,7 +40,7 @@ Here are some examples using custom delimiters and/or conjunctions:
 
   ['a', 'b', 'c'].join_as_series(:conjunction => ' or ') #=> 'a, b or c'
 
-  ['a', 'b', 'c'].join_as_series(:delimiter => '; ', :conjunction => '; or,') #=> 'a; b; or, c'
+  ['a', 'b', 'c'].join_as_series(:delimiter => '; ', :conjunction => '; or, ') #=> 'a; b; or, c'
 
 The use of the serial comma (i.e. the final comma sometimes used before the conjunction) is much debated in grammar (http://en.wikipedia.org/wiki/Serial_comma). By default, SeriesJoiner does not use the serial comma. However, the <tt>:final_delimiter</tt> option can be set to <tt>','</tt> to include it:
 
@@ -55,9 +55,10 @@ This gem is generated with jeweler and uses shoulda for testing. To run tests:
 == Notes
 
 This gem may be compared with the Rails ActiveSupport extension to Array <tt>to_sentence()</tt> (https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/array/conversions.rb). Here are a couple differences:
-* <tt>to_sentence()</tt> requires ActiveSupport, while <tt>join_as_series</tt> has no Rails dependencies;
+* <tt>to_sentence()</tt> requires ActiveSupport, while <tt>join_as_series</tt> has no dependencies;
 * <tt>to_sentence()</tt> has I18n support baken in; and,
-* <tt>to_sentence()</tt> requires two options (<tt>:two_words_connector</tt> and <tt>:last_word_connector</tt>) to override a conjunction, instead of the one (<tt>:conjunction</tt>) required by <tt>join_as_series</tt> 
+* <tt>to_sentence()</tt> implements the serial comma (see definition above) by default, while <tt>join_as_series</tt> does not; and,
+* <tt>to_sentence()</tt> requires two options (<tt>:two_words_connector</tt> and <tt>:last_word_connector</tt>) to override a conjunction, instead of the one (<tt>:conjunction</tt>) required by <tt>join_as_series</tt>.
 
 == License
 
