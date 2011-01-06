@@ -18,7 +18,7 @@ Add the following to your Gemfile:
 
 == Usage
 
-join_as_series() accepts the following options:
+<tt>join_as_series()</tt> accepts the following options:
 
   :delimiter       # inserted between items, except for the final two (default => ', ')
   :final_delimiter # inserted between the final two items (if > 2), but before the conjunction (default => '')
@@ -42,9 +42,21 @@ Here are some examples using custom delimiters and/or conjunctions:
 
   ['a', 'b', 'c'].join_as_series(:delimiter => '; ', :conjunction => '; or, ') #=> 'a; b; or, c'
 
-The use of the serial comma (i.e. the final comma sometimes used before the conjunction) is much debated in grammar (http://en.wikipedia.org/wiki/Serial_comma). By default, SeriesJoiner does not use the serial comma. However, the <tt>:final_delimiter</tt> option can be set to <tt>','</tt> to include it:
+The use of the serial comma (i.e. the final comma sometimes used before the conjunction) is much debated in grammar circles (http://en.wikipedia.org/wiki/Serial_comma). And who doesn't enjoy a rousing debate about grammar? (Don't answer that)
+
+By default, SeriesJoiner sides with The New York Times stylebook and does not use the serial comma. However, so as not to offend adherents to The Chicago Manual of Style, the <tt>:final_delimiter</tt> option can be set to <tt>','</tt> to include it. For example:
 
   ['a', 'b', 'c'].join_as_series(:final_delimiter => ',') #=> 'a, b, and c'
+
+== I18n Support
+
+If you're using SeriesJoiner in a project with I18n support, such as Rails, include the following translations for your locales:
+
+  en:
+    series_joiner:
+      default_delimiter: ', '
+      default_final_delimiter: ''
+      default_conjunction: ' and '
 
 == Implementation
 
@@ -56,7 +68,6 @@ This gem is generated with jeweler and uses shoulda for testing. To run tests:
 
 This gem's <tt>join_as_series()</tt> method may be compared with the similar <tt>to_sentence()</tt> method implemented in ActiveSupport  (https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/array/conversions.rb). There are several differences:
 * <tt>to_sentence()</tt> requires ActiveSupport, while <tt>join_as_series</tt> has no dependencies;
-* <tt>to_sentence()</tt> has I18n support baken in, while <tt>join_as_series()</tt> does not;
 * <tt>to_sentence()</tt> implements the serial comma (see definition above) by default, while <tt>join_as_series()</tt> does not; and,
 * <tt>to_sentence()</tt> requires two options (<tt>:two_words_connector</tt> and <tt>:last_word_connector</tt>) to override a conjunction, instead of the one (<tt>:conjunction</tt>) required by <tt>join_as_series()</tt>.
 
