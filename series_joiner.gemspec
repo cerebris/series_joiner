@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{series_joiner}
-  s.version = "1.2.0"
+  s.version = "1.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dan Gebhardt"]
-  s.date = %q{2011-01-05}
+  s.date = %q{2011-01-06}
   s.description = %q{Extends Array with a join_as_series() method for joining arrays of items together into grammatically correct series. Useful for joining series like 'a, b and c'. Custom delimiters and conjunctions can be specified.}
   s.email = %q{contact@cerebris.com}
   s.extra_rdoc_files = [
