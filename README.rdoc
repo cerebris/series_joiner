@@ -1,6 +1,6 @@
 = SeriesJoiner
 
-A gem for joining items in arrays together into grammatically correct series. 
+A gem for joining items in arrays together into grammatically correct series, such as "a, b and c". 
 
 SeriesJoiner extends the <tt>Array</tt> class with a <tt>join_as_series()</tt> method which is similar to the built-in <tt>join()</tt> method. However, <tt>join_as_series()</tt> allows for custom delimiters and conjunctions. 
 
