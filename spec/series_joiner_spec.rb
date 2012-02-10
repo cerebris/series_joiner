@@ -1,97 +1,89 @@
-require 'helper'
+require 'spec_helper'
 
-class TestSeriesJoiner < Test::Unit::TestCase
-  context "using default options" do
-    should "join an empty array as nil" do
-      assert_equal nil, [].join_as_series
+describe SeriesJoiner do
+  describe "using default options" do
+    it "should join an empty array as nil" do
+      [].join_as_series.should eq nil
     end
-    should "join an array of one item" do
-      assert_equal 'a', ['a'].join_as_series
+    it "should join an array of one item" do
+      ['a'].join_as_series.should eq 'a'
     end
-    should "join an array of two items" do
-      assert_equal 'a and b', ['a', 'b'].join_as_series
+    it "should join an array of two items" do
+      ['a', 'b'].join_as_series.should eq 'a and b'
     end
-    should "join an array of three items" do
-      assert_equal 'a, b and c', ['a', 'b', 'c'].join_as_series
+    it "should join an array of three items" do
+      ['a', 'b', 'c'].join_as_series.should eq 'a, b and c'
     end
-    should "join an array of four items" do
-      assert_equal 'a, b, c and d', ['a', 'b', 'c', 'd'].join_as_series
+    it "should join an array of four items" do
+      ['a', 'b', 'c', 'd'].join_as_series.should eq 'a, b, c and d'
     end
   end
   
-  context "using an 'or' conjunction" do
-    setup do
-      @options = {:conjunction => ' or '}
-    end
+  describe "using an 'or' conjunction" do
+    let(:options) { {:conjunction => ' or '} }
     
-    should "join an array of one item" do
-      assert_equal 'a', ['a'].join_as_series(@options)
+    it "should join an array of one item" do
+      ['a'].join_as_series(options).should eq 'a'
     end
-    should "join an array of two items" do
-      assert_equal 'a or b', ['a', 'b'].join_as_series(@options)
+    it "should join an array of two items" do
+      ['a', 'b'].join_as_series(options).should eq 'a or b'
     end
-    should "join an array of three items" do
-      assert_equal 'a, b or c', ['a', 'b', 'c'].join_as_series(@options)
+    it "should join an array of three items" do
+      ['a', 'b', 'c'].join_as_series(options).should eq 'a, b or c'
     end
-    should "join an array of four items" do
-      assert_equal 'a, b, c or d', ['a', 'b', 'c', 'd'].join_as_series(@options)
+    it "should join an array of four items" do
+      ['a', 'b', 'c', 'd'].join_as_series(options).should eq 'a, b, c or d'
     end
   end
 
-  context "using a ';' delimiter" do
-    setup do
-      @options = {:delimiter => '; '}
-    end
+  describe "using a ';' delimiter" do
+    let(:options) { {:delimiter => '; '} }
     
-    should "join an array of one item" do
-      assert_equal 'a', ['a'].join_as_series(@options)
+    it "should join an array of one item" do
+      ['a'].join_as_series(options).should eq 'a'
     end
-    should "join an array of two items" do
-      assert_equal 'a and b', ['a', 'b'].join_as_series(@options)
+    it "should join an array of two items" do
+      ['a', 'b'].join_as_series(options).should eq 'a and b'
     end
-    should "join an array of three items" do
-      assert_equal 'a; b and c', ['a', 'b', 'c'].join_as_series(@options)
+    it "should join an array of three items" do
+      ['a', 'b', 'c'].join_as_series(options).should eq 'a; b and c'
     end
-    should "join an array of four items" do
-      assert_equal 'a; b; c and d', ['a', 'b', 'c', 'd'].join_as_series(@options)
+    it "should join an array of four items" do
+      ['a', 'b', 'c', 'd'].join_as_series(options).should eq 'a; b; c and d'
     end
   end
 
-  context "using a ';' delimiter properly" do
-    setup do
-      @options = {:delimiter => '; ', :conjunction => '; or, '}
-    end
+  describe "using a ';' delimiter properly" do
+    let(:options) { {:delimiter => '; ', :conjunction => '; or, '} }
     
-    should "join an array of one item" do
-      assert_equal 'a', ['a'].join_as_series(@options)
+    it "should join an array of one item" do
+      ['a'].join_as_series(options).should eq 'a'
     end
-    should "join an array of two items" do
-      assert_equal 'a; or, b', ['a', 'b'].join_as_series(@options)
+    it "should join an array of two items" do
+      ['a', 'b'].join_as_series(options).should eq 'a; or, b'
     end
-    should "join an array of three items" do
-      assert_equal 'a; b; or, c', ['a', 'b', 'c'].join_as_series(@options)
+    it "should join an array of three items" do
+      ['a', 'b', 'c'].join_as_series(options).should eq 'a; b; or, c'
     end
-    should "join an array of four items" do
-      assert_equal 'a; b; c; or, d', ['a', 'b', 'c', 'd'].join_as_series(@options)
+    it "should join an array of four items" do
+      ['a', 'b', 'c', 'd'].join_as_series(options).should eq 'a; b; c; or, d'
     end
   end
 
-  context "using a ',' final delimiter" do
-    setup do
-      @options = {:final_delimiter => ','}
+  describe "using a ',' final delimiter" do
+    let(:options) { {:final_delimiter => ','} }
+
+    it "should join an array of one item" do
+      ['a'].join_as_series(options).should eq 'a'
     end
-    
-    should "join an array of one item" do
-      assert_equal 'a', ['a'].join_as_series(@options)
+    it "should join an array of two items" do
+      ['a', 'b'].join_as_series(options).should eq 'a and b'
     end
-    should "join an array of two items" do
-      assert_equal 'a and b', ['a', 'b'].join_as_series(@options)
+    it "should join an array of three items" do
+      ['a', 'b', 'c'].join_as_series(options).should eq 'a, b, and c'
     end
-    should "join an array of three items" do
-      assert_equal 'a, b, and c', ['a', 'b', 'c'].join_as_series(@options)
-    end
-    should "join an array of four items" do
-      assert_equal 'a, b, c, and d', ['a', 'b', 'c', 'd'].join_as_series(@options)
+    it "should join an array of four items" do
+      ['a', 'b', 'c', 'd'].join_as_series(options).should eq 'a, b, c, and d'
     end
   end
 end

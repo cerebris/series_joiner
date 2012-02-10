@@ -73,10 +73,11 @@ rake spec
 ## Notes
 
 This gem's `join_as_series()` method may be compared with the similar `to_sentence()` method implemented in ActiveSupport  (https://github.com/rails/rails/blob/master/activesupport/lib/active_support/core_ext/array/conversions.rb). There are several differences:
+
  * `to_sentence()` is part of ActiveSupport, while `join_as_series` is independent;
  * `to_sentence()` implements the serial comma (see definition above) by default, while `join_as_series()` does not; and,
  * `to_sentence()` requires two options (`:two_words_connector` and `:last_word_connector`) to override a conjunction, instead of the one (`:conjunction`) required by `join_as_series()`.
 
 == License
 
-MIT License. Copyright (c) 2011 Cerebris Corporation. See LICENSE.txt for further details.
+Copyright (c) 2011 Cerebris Corporation. This is free software released under the MIT License (see MIT-LICENSE for details).
