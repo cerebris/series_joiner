@@ -86,6 +86,6 @@ This gem's `join_as_series()` method may be compared with the similar `to_senten
  * `to_sentence()` implements the serial comma (see definition above) by default, while `join_as_series()` does not; and,
  * `to_sentence()` requires two options (`:two_words_connector` and `:last_word_connector`) to override a conjunction, instead of the one (`:conjunction`) required by `join_as_series()`.
 
-== License
+## License
 
 Copyright (c) 2011 Cerebris Corporation. This is free software released under the MIT License (see MIT-LICENSE for details).
