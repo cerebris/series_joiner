@@ -1,4 +1,4 @@
-# SeriesJoiner
+# SeriesJoiner [![Build Status](https://secure.travis-ci.org/cerebris/series_joiner.png)](http://travis-ci.org/cerebris/series_joiner)
 
 A gem for joining items in arrays together into grammatically correct series, such as "a, b and c". 
 
