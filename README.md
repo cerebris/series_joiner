@@ -7,6 +7,7 @@ SeriesJoiner extends the `Array` class with a `join_as_series()` method which is
 ## Installation
 
 Run the following (perhaps as sudo):
+
 ```
 gem install series_joiner
 ```
@@ -14,6 +15,7 @@ gem install series_joiner
 ## Bundler Configuration
 
 Add the following to your Gemfile:
+
 ```
 gem 'series_joiner'
 ```
@@ -21,6 +23,7 @@ gem 'series_joiner'
 ## Usage
 
 `join_as_series()` accepts the following options:
+
 ```
 :delimiter       # inserted between items, except for the final two (default => ', ')
 :final_delimiter # inserted between the final two items (if > 2), but before the conjunction (default => '')
@@ -28,6 +31,7 @@ gem 'series_joiner'
 ```
 
 By default, items are joined as follows:
+
 ```
 ['a'].join_as_series #=> 'a'
 
@@ -39,6 +43,7 @@ By default, items are joined as follows:
 ```
 
 Here are some examples using custom delimiters and/or conjunctions:
+
 ```
 ['a', 'b', 'c'].join_as_series(:delimiter => '; ') #=> 'a; b and c'
 
@@ -48,6 +53,7 @@ Here are some examples using custom delimiters and/or conjunctions:
 ```
 
 The use of the serial comma (i.e. the final comma sometimes used before the conjunction) is much debated in grammar circles (http://en.wikipedia.org/wiki/Serial_comma). And who doesn't enjoy a rousing debate about grammar? Don't answer that. Anyway, SeriesJoiner does not use the serial comma by default. If you prefer to use it, just set the `:final_delimiter` option to `','`:
+
 ```
 ['a', 'b', 'c'].join_as_series(:final_delimiter => ',') #=> 'a, b, and c'
 ```
@@ -55,6 +61,7 @@ The use of the serial comma (i.e. the final comma sometimes used before the conj
 ## I18n Support
 
 If you're using SeriesJoiner in a project with I18n support, include the following translations for your locales:
+
 ```
   en:
     series_joiner:
@@ -66,6 +73,7 @@ If you're using SeriesJoiner in a project with I18n support, include the followi
 ## Tests
 
 This gem uses rspec for testing. To test:
+
 ```
 rake spec
 ```
