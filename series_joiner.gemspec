@@ -12,7 +12,8 @@ Gem::Specification.new do |s|
   s.summary      = "Join items in arrays together into grammatically correct series."
   s.description  = "Extends Array with a join_as_series() method for joining arrays of items together into grammatically correct series. Useful for joining series like 'a, b and c'. Custom delimiters and conjunctions can be specified."
 
-  s.files        = `git ls-files app lib`.split("\n")
+  s.files        = Dir["lib/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
+  s.test_files   = Dir["spec/**/*"]
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
 
